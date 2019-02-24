@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Collections;
 
 namespace PadawansTask7
 {
@@ -6,19 +8,44 @@ namespace PadawansTask7
     {
         public static void OrderStringsByLength(string[] array)
         {
-            string temp = array[0];
-            for (int i = 0; i < array.Length - 1; i++)
+            if (array == null)
             {
-                for (int j = 1; j < array.Length; j++)
+                throw new ArgumentNullException();
+            }
+            if (array.Length == 0)
+            {
+                throw new ArgumentException();
+            }
+
+            string temp = array[0];
+            for (int i = 0; i < array.Length; i++)
+            {
+                for (int j = 0; j < array.Length - 1; j++)
                 {
-                    if (array[i].Length > array[j].Length)
+                    if (array[j].Length > array[j + 1].Length)
                     {
                         temp = array[j];
-                        array[j] = array[i];
-                        array[i] = temp;
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
                     }
                 }
             }
+            //Array.Sort(array, new comp());
+            // return array.OrderBy(x => x.Length).ToArray();
         }
+
+
+        //public class comp:IComparer
+        //{
+        //    public int Compare(object a, object b)
+        //    {
+        //        if (a.ToString().Length > b.ToString().Length)
+        //            return 1;
+        //        else if (a.ToString().Length == b.ToString().Length)
+        //            return 0;
+        //        return -1;
+
+        //    }
+        //}
     }
 }
