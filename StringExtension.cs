@@ -16,6 +16,13 @@ namespace PadawansTask7
             {
                 throw new ArgumentException();
             }
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == null)
+                {
+                    throw new ArgumentNullException();
+                }
+            }
 
             string temp = array[0];
             for (int i = 0; i < array.Length; i++)
